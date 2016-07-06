@@ -25,10 +25,9 @@ async.run(function *() {
 function agent() {
 	'use strict';
 
-    ObjC.schedule(ObjC.mainQueue, () => {
-	   const window = ObjC.classes.UIWindow.keyWindow();
-	   const ui = window.recursiveDescription().toString();
-	   send({ui: ui});
-	
+ ObjC.schedule(ObjC.mainQueue, () => {
+    const window = ObjC.classes.UIWindow.keyWindow();
+	const ui = window.recursiveDescription().toString();
+	send({ui: ui});
 });
 }

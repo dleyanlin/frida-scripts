@@ -23,9 +23,6 @@ for(var className in ObjC.classes) {
 
 var hook = ObjC.classes.wbxUINoAccountSearchMeeting["- _joinMeeting:"];
 
-var instance = hook.getInstance();
-console.log("\n Instanve value is : " + instance);  
-
 Interceptor.attach(hook.implementation, {
             onEnter: function(args) {
 
