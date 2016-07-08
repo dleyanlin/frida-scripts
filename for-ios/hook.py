@@ -22,12 +22,12 @@ def do_hook():
     if(ObjC.available) {
         for(var className in ObjC.classes) {
             if (ObjC.classes.hasOwnProperty(className)) {
-                if(className == "wbxUINoAccountSearchMeeting") {
+                if(className == "class") {
                     send("Found our target class : " + className);
                 }
             }
         }
-        var hook = ObjC.classes.wbxUINoAccountSearchMeeting["- _joinMeeting:"];
+        var hook = ObjC.classes.class["- hookfunc:"];
         Interceptor.attach(hook.implementation, {
             onEnter: function(args) {
                 var receiver = new ObjC.Object(args[0]);
@@ -48,7 +48,7 @@ def do_hook():
 
 if __name__ == '__main__':
     try:
-        process = frida.get_device_manager.enumerate_devices()[-1].attach("com.webex.meetinginhouse")
+        process = frida.get_device_manager.enumerate_devices()[-1].attach("abc")
         session = process.session
         #session = frida.attach("FridaPlayGround")
         script = session.create_script(do_hook())

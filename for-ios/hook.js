@@ -15,13 +15,13 @@ Interceptor.attach(keyboard.implementation, {
 
 for(var className in ObjC.classes) {
     if (ObjC.classes.hasOwnProperty(className)) {
-        if(className == "wbxUINoAccountSearchMeeting") {
+        if(className == "class") {
             console.log("\nFound our target class : " + className);
         }
     }
 }
 
-var hook = ObjC.classes.wbxUINoAccountSearchMeeting["- _joinMeeting:"];
+var hook = ObjC.classes.class["- hookfunc:"];
 
 Interceptor.attach(hook.implementation, {
             onEnter: function(args) {
